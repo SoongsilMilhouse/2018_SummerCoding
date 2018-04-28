@@ -21,48 +21,48 @@ class Solution1 {
 	
 	public static int[] solution(int n, String[] words) {
 		char first_alphabet = 0;
-        char last_alphabet = 0;
-        char tmp_alphabet = 0;
+		char last_alphabet = 0;
+		char tmp_alphabet = 0;
 		int[] answer = {0, 0};
-        int turn = 0;
-        int word_length = 0;
-        int tmp_length = 0;
-        String[] tmp_words = new String[words.length];  
-       
-        for (int i = 0; i < words.length; i++) {
-        	word_length = words[i].length();
-        	
-        	if(i % n == 0) turn++;
-        	
-        	if(i == 0) {
-        		tmp_length++;
-        		first_alphabet = words[i].charAt(0);
-        		last_alphabet = words[i].charAt(word_length-1);
-        		tmp_alphabet = last_alphabet;
-        		tmp_words[i] = words[i];
-        		continue;
-        	}
-        	
-        	for (int j = 0; j < tmp_length; j++) {
-        		if (tmp_words[j].equals(words[i])) {
-        			answer[0] = i % n + 1;
-        			answer[1] = turn;
-        			return answer;
-        		}
-        	}
-    	
-        	tmp_words[i] = words[i];
-        	tmp_alphabet = last_alphabet;
-        	first_alphabet = words[i].charAt(0);
-        	last_alphabet = words[i].charAt(word_length-1);
-        	
-          	if(tmp_alphabet != first_alphabet) {
-          		answer[0] = i % n + 1;
-    			answer[1] = turn;
-    			return answer;
-        	}
-        } 
-        
-        return answer;
+		int turn = 0;
+		int word_length = 0;
+		int tmp_length = 0;
+		String[] tmp_words = new String[words.length];  
+
+		for (int i = 0; i < words.length; i++) {
+			word_length = words[i].length();
+
+			if(i % n == 0) turn++;
+
+			if(i == 0) {
+				tmp_length++;
+				first_alphabet = words[i].charAt(0);
+				last_alphabet = words[i].charAt(word_length-1);
+				tmp_alphabet = last_alphabet;
+				tmp_words[i] = words[i];
+				continue;
+			}
+
+			for (int j = 0; j < tmp_length; j++) {
+				if (tmp_words[j].equals(words[i])) {
+					answer[0] = i % n + 1;
+					answer[1] = turn;
+					return answer;
+				}
+			}
+
+			tmp_words[i] = words[i];
+			tmp_alphabet = last_alphabet;
+			first_alphabet = words[i].charAt(0);
+			last_alphabet = words[i].charAt(word_length-1);
+
+			if(tmp_alphabet != first_alphabet) {
+				answer[0] = i % n + 1;
+				answer[1] = turn;
+				return answer;
+			}
+		} 
+
+	return answer;
     }
 }
